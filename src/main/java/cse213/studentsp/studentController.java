@@ -31,13 +31,29 @@ public class studentController
         float cgpa = Float.parseFloat(cgpaTF.getText());
         LocalDate dob = dobDate.getValue();
         boolean hasScholarship = scholarshipCkB.isSelected();
+        Alert a = new Alert(Alert.AlertType.ERROR);
 
-        if (cgpa <=4 && cgpa <=0 ) {
-            outputLable.setText("CG must be less than or equal to 4 ");
+        if (cgpa >4 ) {
+            a.setContentText("CGPA can't be greater than 4 ");
+            a.showAndWait();
             return;
         }
+        if(cgpa <=0 ){
+            a.setContentText("CGPA can't be negative");
+            a.showAndWait();
+            return;
 
-
+        }
+        if(cgpa < 3.7 && scholarshipCkB.isSelected() ){
+            a.setContentText("Scholarship is not allowed less than 3.7");
+            a.showAndWait();
+            return;
+        }
+        if(cgpa >= 3.7 && !scholarshipCkB.isSelected()){
+            a.setContentText("Scholarship must avaiable from CG 3.7");
+            a.showAndWait();
+            return;
+        }
         Student student = new Student(name, id, cgpa, dob, hasScholarship);
 
         outputLable.setText(student.toString());

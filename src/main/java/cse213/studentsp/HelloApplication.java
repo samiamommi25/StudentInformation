@@ -20,18 +20,18 @@ public class HelloApplication extends Application {
 
 
     }
-    public void showAlert() {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("error");
-        alert.setContentText("your game has crashed");
-        alert.showAndWait();
-    }
-    public void showAlert(String s) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confarmation");
-        alert.setContentText(s);
-        alert.showAndWait();
-    }
+//    public void showAlert() {
+//        Alert alert = new Alert(Alert.AlertType.ERROR);
+//        alert.setTitle("error");
+//        alert.setContentText("your game has crashed");
+//        alert.showAndWait();
+//    }
+//    public void showAlert(String s) {
+//        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+//        alert.setTitle("Confarmation");
+//        alert.setContentText(s);
+//        alert.showAndWait();
+//    }
 
 
 
