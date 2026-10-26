@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class HelloApplication extends Application {
     @Override
@@ -15,5 +16,9 @@ public class HelloApplication extends Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
+        Student s = new Student("samia", 2521129,3.5F,
+                LocalDate.of(2004,7,23),true);
+        System.out.println(s);
     }
 }
+//public Student(String name, int id, float cgpa, LocalDate dateOfBirth, boolean hasScholarship)
