@@ -2,8 +2,12 @@ package cse213.studentsp;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+
+//import static jdk.internal.org.jline.utils.Colors.s;
 
 public class studentController
 {
@@ -16,12 +20,24 @@ public class studentController
     @javafx.fxml.FXML
     private TextField idTF;
     @javafx.fxml.FXML
-    private Label outputLable;
-    @javafx.fxml.FXML
     private CheckBox scholarshipCkB;
+    ArrayList<Student> studentList = new ArrayList<>();
+    @javafx.fxml.FXML
+    private TableColumn<String,Student> nameTC;
+    @javafx.fxml.FXML
+    private TableView<Student> tableView;
+    @javafx.fxml.FXML
+    private TableColumn<Integer,Student> idTC;
+    @javafx.fxml.FXML
+    private TableColumn<Float,Student> cgpaTC;
 
     @javafx.fxml.FXML
     public void initialize() {
+        idTC.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nameTC.setCellValueFactory(new PropertyValueFactory<>("name"));
+        cgpaTC.setCellValueFactory(new PropertyValueFactory<>("cgpa"));
+
+
     }
 
     @javafx.fxml.FXML
@@ -55,9 +71,18 @@ public class studentController
             return;
         }
         Student student = new Student(name, id, cgpa, dob, hasScholarship);
+        studentList.add(student);
 
-        outputLable.setText(student.toString());
         System.out.println(student);
 
+    }
+
+    @javafx.fxml.FXML
+    public void showstudentButton(ActionEvent actionEvent) {
+        for (Student student : studentList) {
+            if(student.getCgpa()>= 3.5){
+                tableView.getItems().add(student);
+            }
+        }
     }
 }
